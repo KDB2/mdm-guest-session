@@ -1,0 +1,3 @@
+#!/bin/sh
+export MDMSESSION="${mDMSESSION%%-guest-restricted}"
+exec /etc/mdm/Xsession "$@"

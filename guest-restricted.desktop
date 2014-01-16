@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=guest-restricted
+Comment=Restricted guest session
+Exec=/usr/share/mdm/guest-session/Xsession
+TryExec=/usr/share/mdm/guest-session/Xsession
+Icon=
+Type=Application
+NoDisplay=true

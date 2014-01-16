@@ -1,0 +1,17 @@
+mdm-guest-session
+-----------------
+
+This package adds support for starting a guest session through mdm's
+flexiserver, which any already logged in user can launch.
+
+It creates a temporary guest account with a temporary home directory and
+some restricted privileges (such as not being able to read any home 
+directory or do any permanent change to the system).
+
+Just call /usr/share/mdm/guest-session/guest-session-launch to start the
+session; this only works if you already have a mdm session, though, to
+avoid using a machine without authorization and no password.
+
+Forked from gdm-guest-session
+
+Corbin <ravetcofx@gmail.com>

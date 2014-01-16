@@ -1,0 +1,22 @@
+Source: mdm-guest-session
+Section: gnome
+Priority: optional
+Build-Depends: cdbs, debhelper (>= 6)
+Maintainer: Corbin <ravetcofx@gmail.com>
+Standards-Version: 3.8.4
+
+Package: mdm-guest-session
+Architecture: all
+Depends: mdm, passwd, apparmor
+Description: mdm extension for guest session
+ This package adds support for starting a guest session through mdm's
+ flexiserver, which any already logged in user can launch.
+ .
+ It creates a temporary guest account with a temporary home directory and
+ some restricted privileges (such as not being able to read any home 
+ directory or do any permanent change to the system).
+ .
+ Just call /usr/share/mdm/guest-session/guest-session-launch to start the
+ session.
+ .
+ Forked from gdm-guest-session
