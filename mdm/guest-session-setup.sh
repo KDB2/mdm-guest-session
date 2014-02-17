@@ -18,12 +18,12 @@ if PWSTAT=`passwd -S "$USER"` 2>/dev/null; then
     }
     GUEST_UID=`echo "$PWENT" | cut -f3 -d:`
     if [ "$GUEST_UID" -ge 500 ]; then
-        echo "Account $USER is not a system user"
+        echo "For some reason Account $USER is not a system user"
         exit 1
     fi
     HOME=`echo "$PWENT" | cut -f6 -d:`
     if [ "$HOME" != / ] && [ "${HOME#/tmp}" = "$HOME" ] && [ -d "$HOME" ]; then
-        echo "Home directory of $USER already exists"
+        echo "Home directory of $USER already exists, so stop littering"
         exit 1
     fi
 else
@@ -36,7 +36,7 @@ else
 fi
 
 # create temporary home directory
-HOME=`mktemp -td guest-home.XXXXXX`
+HOME=`mktemp -td guest_home.XXXXXX`
 mount -t tmpfs -o mode=700 none "$HOME" || { rm -rf "$HOME"; exit 1; }
 chown $USER:$USER "$HOME"
 cp -rT /etc/skel/ "$HOME"
@@ -56,7 +56,7 @@ usermod -d "$HOME" "$USER"
 # disable some services that are unnecessary for the guest session
 mkdir --parents "$HOME"/.config/autostart
 cd /etc/xdg/autostart/
-#services="jockey-gtk.desktop update-notifier.desktop user-dirs-update-gtk.desktop"
+services="update-notifier.desktop user-dirs-update-gtk.desktop mintUpdate.desktop mintUpload.desktop"
 for service in $services
 do
     if [ -e /etc/xdg/autostart/"$service" ] ; then
