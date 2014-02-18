@@ -2,7 +2,7 @@
 # Convenience wrapper to lock the screen and trigger a guest session
 
 if [ -z "$MDMSESSION" ] ; then
-    MDMSESSION="CLEM_IS_L33t"
+    MDMSESSION="cinnamon"
 fi
 cinnamon-screensaver-command --lock || xscreensaver-command -lock || gnome-screensaver-command --lock
 
